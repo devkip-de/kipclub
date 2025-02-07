@@ -1,0 +1,111 @@
+/var/www/kipclub
+├── apps
+│   ├── kip_online_ru
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_mqttbrokermessage.py
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   ├── models.py
+│   │   ├── templates
+│   │   │   ├── device_detail_kol.html
+│   │   │   ├── device_list_kol.html
+│   │   │   └── kol_home.html
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── kipcloud_ru
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   ├── models.py
+│   │   ├── templates
+│   │   │   ├── device_detail_kc.html
+│   │   │   ├── device_list_kc.html
+│   │   │   └── home_kc.html
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── kipclub_ru
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── forms.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   ├── models.py
+│   │   ├── templates
+│   │   │   ├── home.html
+│   │   │   ├── mqtt_settings.html
+│   │   │   └── mqtt_settings_success.html
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   └── kipclub_store
+│       ├── __init__.py
+│       ├── __pycache__
+│       ├── admin.py
+│       ├── apps.py
+│       ├── migrations
+│       │   ├── 0001_initial.py
+│       │   ├── __init__.py
+│       │   └── __pycache__
+│       ├── models.py
+│       ├── templates
+│       │   ├── home_kcs.html
+│       │   ├── product_detail.html
+│       │   └── product_list.html
+│       ├── tests.py
+│       ├── urls.py
+│       └── views.py
+├── config
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── asgi.py
+│   ├── middleware
+│   │   ├── HostRoutingMiddleware.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── debug.log
+├── manage.py
+├── media
+├── project_structure.txt
+├── requirements.txt
+├── scripts
+│   ├── mqtt_client.py
+│   └── mqtt_client_st1.py
+├── static
+├── templates
+│   └── base.html
+└── venv
+    ├── bin
+    ├── include
+    ├── lib
+    └── ...
+├── .git
+│   ├── branches
+│   ├── hooks
+│   ├── info
+│   ├── logs
+│   ├── objects
+│   └── refs
+└── .vscode
+    └── ...
+
+
+    

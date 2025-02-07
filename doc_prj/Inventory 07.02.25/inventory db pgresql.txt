@@ -1,0 +1,218 @@
+ List of relations
+ Schema |                Name                 | Type  |    Owner     
+--------+-------------------------------------+-------+--------------
+ public | auth_group                          | table | kipclub_user
+ public | auth_group_permissions              | table | kipclub_user
+ public | auth_permission                     | table | kipclub_user
+ public | auth_user                           | table | kipclub_user
+ public | auth_user_groups                    | table | kipclub_user
+ public | auth_user_user_permissions          | table | kipclub_user
+ public | django_admin_log                    | table | kipclub_user
+ public | django_celery_beat_clockedschedule  | table | kipclub_user
+ public | django_celery_beat_crontabschedule  | table | kipclub_user
+ public | django_celery_beat_intervalschedule | table | kipclub_user
+ public | django_celery_beat_periodictask     | table | kipclub_user
+ public | django_celery_beat_periodictasks    | table | kipclub_user
+ public | django_celery_beat_solarschedule    | table | kipclub_user
+ public | django_content_type                 | table | kipclub_user
+ public | django_migrations                   | table | kipclub_user
+ public | django_session                      | table | kipclub_user
+ public | kip_online_ru_device                | table | kipclub_user
+ public | kip_online_ru_monitoringdata        | table | kipclub_user
+ public | kipcloud_ru_privatedevice           | table | kipclub_user
+ public | kipcloud_ru_privatemonitoringdata   | table | kipclub_user
+ public | kipclub_ru_mqttsettings             | table | kipclub_user
+ public | kipclub_store_order                 | table | kipclub_user
+ public | kipclub_store_product               | table | kipclub_user
+ public | mqttbroker_tb                       | table | kipclub_user
+(24 rows)
+
+Инвентаризация схем, пользователей и ролей.
+
+      List of schemas
+  Name  |       Owner       
+--------+-------------------
+ public | pg_database_owner
+(1 row)
+
+
+
+                               List of roles
+  Role name   |                         Attributes                         
+--------------+------------------------------------------------------------
+ aa_psql      | Superuser
+ de_psql      | Superuser
+ dev_psql     | Superuser
+ kipclub_user | Superuser
+ postgres     | Superuser, Create role, Create DB, Replication, Bypass RLS
+
+
+
+           rolname           | rolsuper | rolinherit | rolcreaterole | rolcreatedb | rolcanlogin | rolreplication | rolbypassrls 
+-----------------------------+----------+------------+---------------+-------------+-------------+----------------+--------------
+ pg_database_owner           | f        | t          | f             | f           | f           | f              | f
+ pg_read_all_data            | f        | t          | f             | f           | f           | f              | f
+ pg_write_all_data           | f        | t          | f             | f           | f           | f              | f
+ pg_monitor                  | f        | t          | f             | f           | f           | f              | f
+ pg_read_all_settings        | f        | t          | f             | f           | f           | f              | f
+ pg_read_all_stats           | f        | t          | f             | f           | f           | f              | f
+ pg_stat_scan_tables         | f        | t          | f             | f           | f           | f              | f
+ pg_read_server_files        | f        | t          | f             | f           | f           | f              | f
+ pg_write_server_files       | f        | t          | f             | f           | f           | f              | f
+ pg_execute_server_program   | f        | t          | f             | f           | f           | f              | f
+ pg_signal_backend           | f        | t          | f             | f           | f           | f              | f
+ pg_checkpoint               | f        | t          | f             | f           | f           | f              | f
+ pg_use_reserved_connections | f        | t          | f             | f           | f           | f              | f
+ pg_create_subscription      | f        | t          | f             | f           | f           | f              | f
+ postgres                    | t        | t          | t             | t           | t           | t              | t
+ de_psql                     | t        | t          | f             | f           | t           | f              | f
+ aa_psql                     | t        | t          | f             | f           | t           | f              | f
+ dev_psql                    | t        | t          | f             | f           | t           | f              | f
+ kipclub_user                | t        | t          | f             | f           | t           | f              | f
+(19 rows)
+
+
+
+**Итоги инвентаризации схем, пользователей и ролей:**
+
+1. **Схемы:**
+    - `public`: Владелец `pg_database_owner`
+
+2. **Пользователи и роли:**
+    - `aa_psql`: Superuser
+    - `de_psql`: Superuser
+    - `dev_psql`: Superuser
+    - `kipclub_user`: Superuser
+    - `postgres`: Superuser, Create role, Create DB, Replication, Bypass RLS
+    - Другие роли с различными атрибутами, такими как `pg_read_all_data`, `pg_write_all_data`, `pg_monitor`, и т.д.
+
+
+Инвентаризация таблиц:
+
+
+                                                          Table "public.kip_online_ru_device"
+   Column   |           Type           | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description 
+------------+--------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id         | bigint                   |           | not null | generated by default as identity | plain    |             |              | 
+ name       | character varying(255)   |           | not null |                                  | extended |             |              | 
+ location   | character varying(255)   |           | not null |                                  | extended |             |              | 
+ status     | character varying(50)    |           | not null |                                  | extended |             |              | 
+ created_at | timestamp with time zone |           | not null |                                  | plain    |             |              | 
+Indexes:
+    "kip_online_ru_device_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "kip_online_ru_monitoringdata" CONSTRAINT "kip_online_ru_monito_device_id_24669292_fk_kip_onlin" FOREIGN KEY (device_id) REFERENCES kip_online_ru_device(id) DEFERRABLE INITIALLY DEFERRED
+Access method: heap
+
+
+                                                     Table "public.kip_online_ru_monitoringdata"
+  Column   |           Type           | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description 
+-----------+--------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id        | bigint                   |           | not null | generated by default as identity | plain    |             |              | 
+ timestamp | timestamp with time zone |           | not null |                                  | plain    |             |              | 
+ parameter | character varying(100)   |           | not null |                                  | extended |             |              | 
+ value     | double precision         |           | not null |                                  | plain    |             |              | 
+ device_id | bigint                   |           | not null |                                  | plain    |             |              | 
+Indexes:
+    "kip_online_ru_monitoringdata_pkey" PRIMARY KEY, btree (id)
+    "kip_online_ru_monitoringdata_device_id_24669292" btree (device_id)
+Foreign-key constraints:
+    "kip_online_ru_monito_device_id_24669292_fk_kip_onlin" FOREIGN KEY (device_id) REFERENCES kip_online_ru_device(id) DEFERRABLE INITIALLY DEFERRED
+Access method: heap
+
+
+                                                       Table "public.kipcloud_ru_privatedevice"
+   Column   |           Type           | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description 
+------------+--------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id         | bigint                   |           | not null | generated by default as identity | plain    |             |              | 
+ name       | character varying(255)   |           | not null |                                  | extended |             |              | 
+ owner      | character varying(255)   |           | not null |                                  | extended |             |              | 
+ location   | character varying(255)   |           | not null |                                  | extended |             |              | 
+ status     | character varying(50)    |           | not null |                                  | extended |             |              | 
+ created_at | timestamp with time zone |           | not null |                                  | plain    |             |              | 
+Indexes:
+    "kipcloud_ru_privatedevice_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "kipcloud_ru_privatemonitoringdata" CONSTRAINT "kipcloud_ru_privatem_device_id_21e435c7_fk_kipcloud_" FOREIGN KEY (device_id) REFERENCES kipcloud_ru_privatedevice(id) DEFERRABLE INITIALLY DEFERRED
+Access method: heap
+
+
+                                                   Table "public.kipcloud_ru_privatemonitoringdata"
+  Column   |           Type           | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description 
+-----------+--------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id        | bigint                   |           | not null | generated by default as identity | plain    |             |              | 
+ timestamp | timestamp with time zone |           | not null |                                  | plain    |             |              | 
+ parameter | character varying(100)   |           | not null |                                  | extended |             |              | 
+ value     | double precision         |           | not null |                                  | plain    |             |              | 
+ device_id | bigint                   |           | not null |                                  | plain    |             |              | 
+Indexes:
+    "kipcloud_ru_privatemonitoringdata_pkey" PRIMARY KEY, btree (id)
+    "kipcloud_ru_privatemonitoringdata_device_id_21e435c7" btree (device_id)
+Foreign-key constraints:
+    "kipcloud_ru_privatem_device_id_21e435c7_fk_kipcloud_" FOREIGN KEY (device_id) REFERENCES kipcloud_ru_privatedevice(id) DEFERRABLE INITIALLY DEFERRED
+Access method: heap
+
+
+                                                         Table "public.kipclub_ru_mqttsettings"
+    Column     |          Type          | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description 
+---------------+------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id            | bigint                 |           | not null | generated by default as identity | plain    |             |              | 
+ MQTT_BROKER   | character varying(255) |           | not null |                                  | extended |             |              | 
+ MQTT_PORT     | integer                |           | not null |                                  | plain    |             |              | 
+ MQTT_USERNAME | character varying(255) |           |          |                                  | extended |             |              | 
+ MQTT_PASSWORD | character varying(255) |           |          |                                  | extended |             |              | 
+ MQTT_TOPICS   | text                   |           | not null |                                  | extended |             |              | 
+ ENCRYPTION    | character varying(3)   |           | not null |                                  | extended |             |              | 
+Indexes:
+    "kipclub_ru_mqttsettings_pkey" PRIMARY KEY, btree (id)
+Check constraints:
+    "kipclub_ru_mqttsettings_MQTT_PORT_check" CHECK ("MQTT_PORT" >= 0)
+Access method: heap
+
+
+                                                          Table "public.kipclub_store_order"
+   Column   |           Type           | Collation | Nullable |             Default              | Storage | Compression | Stats target | Description 
+------------+--------------------------+-----------+----------+----------------------------------+---------+-------------+--------------+-------------
+ id         | bigint                   |           | not null | generated by default as identity | plain   |             |              | 
+ quantity   | integer                  |           | not null |                                  | plain   |             |              | 
+ ordered_at | timestamp with time zone |           | not null |                                  | plain   |             |              | 
+ product_id | bigint                   |           | not null |                                  | plain   |             |              | 
+Indexes:
+    "kipclub_store_order_pkey" PRIMARY KEY, btree (id)
+    "kipclub_store_order_product_id_ed311410" btree (product_id)
+Check constraints:
+    "kipclub_store_order_quantity_check" CHECK (quantity >= 0)
+Foreign-key constraints:
+    "kipclub_store_order_product_id_ed311410_fk_kipclub_s" FOREIGN KEY (product_id) REFERENCES kipclub_store_product(id) DEFERRABLE INITIALLY DEFERRED
+Access method: heap
+
+
+                                                          Table "public.kipclub_store_product"
+   Column    |           Type           | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description 
+-------------+--------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id          | bigint                   |           | not null | generated by default as identity | plain    |             |              | 
+ name        | character varying(255)   |           | not null |                                  | extended |             |              | 
+ description | text                     |           | not null |                                  | extended |             |              | 
+ price       | numeric(10,2)            |           | not null |                                  | main     |             |              | 
+ stock       | integer                  |           | not null |                                  | plain    |             |              | 
+ created_at  | timestamp with time zone |           | not null |                                  | plain    |             |              | 
+ updated_at  | timestamp with time zone |           | not null |                                  | plain    |             |              | 
+Indexes:
+    "kipclub_store_product_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "kipclub_store_order" CONSTRAINT "kipclub_store_order_product_id_ed311410_fk_kipclub_s" FOREIGN KEY (product_id) REFERENCES kipclub_store_product(id) DEFERRABLE INITIALLY DEFERRED
+Access method: heap
+
+
+                                                             Table "public.mqttbroker_tb"
+   Column   |           Type           | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description 
+------------+--------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id         | integer                  |           | not null | generated by default as identity | plain    |             |              | 
+ client_id  | character varying(255)   |           | not null |                                  | extended |             |              | 
+ topic      | character varying(255)   |           | not null |                                  | extended |             |              | 
+ message    | text                     |           | not null |                                  | extended |             |              | 
+ time_stamp | timestamp with time zone |           | not null |                                  | plain    |             |              | 
+Indexes:
+    "mqttbroker_tb_pkey" PRIMARY KEY, btree (id)
+Access method: heap
+

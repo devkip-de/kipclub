@@ -1,0 +1,19 @@
+# Окружение Python
+venv/
+
+# Конфиденциальные файлы и конфигурации
+.env
+__pycache__/
+*.py[cod]
+*.sqlite3
+
+# Логи
+*.log
+debug.log
+
+# Миграции
+**/migrations/
+
+# Статические файлы и медиа-данные
+static/
+media/

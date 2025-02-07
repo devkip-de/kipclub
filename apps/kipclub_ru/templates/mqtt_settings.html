@@ -1,0 +1,16 @@
+<!-- apps/kipclub_ru/templates/mqtt_settings.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Настройки MQTT</title>
+</head>
+<body>
+    <h1>Настройки MQTT</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+</body>
+</html>

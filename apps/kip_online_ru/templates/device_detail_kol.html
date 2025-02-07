@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ device.name }} Details</title>
+</head>
+<body>
+    <a href="http://kipclub.ru">В КИП Клуб.</a>
+    <h1>{{ device.name }}</h1>
+    <p>Location: {{ device.location }}</p>
+    <p>Status: {{ device.status }}</p>
+    <h2>Monitoring Data</h2>
+    <ul>
+        {% for data in device.monitoring_data.all %}
+            <li>{{ data.timestamp }}: {{ data.parameter }} - {{ data.value }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'online_device_list' %}">Назад, к списку устройств.</a>
+</body>
+</html>

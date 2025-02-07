@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог</title>
+</head>
+<body>
+    <ul>
+        <li><a href="http://kipclub.ru">В КИП Клуб.</a></li>
+        <li><a href="http://kipclub.store">На главную в магазин.</a></li>
+    </ul>
+    <h1>Каталог</h1>
+    <ul>
+        {% for product in products %}
+            <li>
+                <a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a> - ${{ product.price }}
+                <a href="{% url '' product.pk %}">{{ product.name }}</a> - ${{ product.price }}
+            </li>
+           
+        {% endfor %}
+    </ul>
+</body>
+</html>

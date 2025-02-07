@@ -1,0 +1,28 @@
+<!-- apps/kipcloud_ru/templates/kipcloud_ru/device_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ device.name }} Details</title>
+</head>
+<body>
+    <a href="http://kipclub.ru">В КИП Клуб.</a>
+    <h1>{{ device.name }}</h1>
+    <p><strong>Owner:</strong> {{ device.owner }}</p>
+    <p><strong>Location:</strong> {{ device.location }}</p>
+    <p><strong>Status:</strong> {{ device.status }}</p>
+    <p><strong>Created at:</strong> {{ device.created_at }}</p>
+
+    <h2>Monitoring Data</h2>
+    <ul>
+        {% for data in device.monitoring_data.all %}
+            <li>{{ data.timestamp }} - {{ data.parameter }}: {{ data.value }}</li>
+        {% empty %}
+            <li>No monitoring data available.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'cloud_device_list' %}">Назад, к списку устройств.</a>
+</body>
+</html>

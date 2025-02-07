@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список устройств</title>
+</head>
+<body>
+    <a href="http://kipclub.ru">В КИП Клуб.</a>
+    <h1>Список доступных устройств.</h1>
+    <ul>
+        {% for device in devices %}
+            <li>
+                <a href="{% url 'online_device_detail' device.pk %}">{{ device.name }}</a> - {{ device.status }}
+            </li>
+        {% empty %}
+            <li>Нет доступных устройств.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'online_home' %}">На Главную</a>
+</body>
+</html>
