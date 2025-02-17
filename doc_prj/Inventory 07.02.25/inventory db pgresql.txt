@@ -216,3 +216,68 @@ Indexes:
     "mqttbroker_tb_pkey" PRIMARY KEY, btree (id)
 Access method: heap
 
+
+Инвентаризация пользователей:
+
+ List of roles
+  Role name   |                         Attributes                         
+--------------+------------------------------------------------------------
+ aa_psql      | Superuser
+ de_psql      | Superuser
+ dev_psql     | Superuser
+ kipclub_user | Superuser
+ postgres     | Superuser, Create role, Create DB, Replication, Bypass RLS
+
+
+Права и роли пользователя, указанного в качестве програмного пользователя в settings.py - kipclub_user:
+                                                         Access privileges
+ Schema |                    Name                    |   Type   |         Access privileges         | Column privileges | Policies 
+--------+--------------------------------------------+----------+-----------------------------------+-------------------+----------
+ public | auth_group                                 | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | auth_group_id_seq                          | sequence |                                   |                   | 
+ public | auth_group_permissions                     | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | auth_group_permissions_id_seq              | sequence |                                   |                   | 
+ public | auth_permission                            | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | auth_permission_id_seq                     | sequence |                                   |                   | 
+ public | auth_user                                  | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | auth_user_groups                           | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | auth_user_groups_id_seq                    | sequence |                                   |                   | 
+ public | auth_user_id_seq                           | sequence |                                   |                   | 
+ public | auth_user_user_permissions                 | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | auth_user_user_permissions_id_seq          | sequence |                                   |                   | 
+ public | django_admin_log                           | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | django_admin_log_id_seq                    | sequence |                                   |                   | 
+ public | django_celery_beat_clockedschedule         | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | django_celery_beat_clockedschedule_id_seq  | sequence |                                   |                   | 
+ public | django_celery_beat_crontabschedule         | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | django_celery_beat_crontabschedule_id_seq  | sequence |                                   |                   | 
+ public | django_celery_beat_intervalschedule        | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | django_celery_beat_intervalschedule_id_seq | sequence |                                   |                   | 
+ public | django_celery_beat_periodictask            | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | django_celery_beat_periodictask_id_seq     | sequence |                                   |                   | 
+ public | django_celery_beat_periodictasks           | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | django_celery_beat_solarschedule           | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | django_celery_beat_solarschedule_id_seq    | sequence |                                   |                   | 
+ public | django_content_type                        | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | django_content_type_id_seq                 | sequence |                                   |                   | 
+ public | django_migrations                          | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | django_migrations_id_seq                   | sequence |                                   |                   | 
+ public | django_session                             | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | kip_online_ru_device                       | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | kip_online_ru_device_id_seq                | sequence |                                   |                   | 
+ public | kip_online_ru_monitoringdata               | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | kip_online_ru_monitoringdata_id_seq        | sequence |                                   |                   | 
+ public | kipcloud_ru_privatedevice                  | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | kipcloud_ru_privatedevice_id_seq           | sequence |                                   |                   | 
+ public | kipcloud_ru_privatemonitoringdata          | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | kipcloud_ru_privatemonitoringdata_id_seq   | sequence |                                   |                   | 
+ public | kipclub_ru_mqttsettings                    | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | kipclub_ru_mqttsettings_id_seq             | sequence |                                   |                   | 
+ public | kipclub_store_order                        | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | kipclub_store_order_id_seq                 | sequence |                                   |                   | 
+ public | kipclub_store_product                      | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | kipclub_store_product_id_seq               | sequence |                                   |                   | 
+ public | mqttbroker_tb                              | table    | kipclub_user=arwdDxt/kipclub_user |                   | 
+ public | mqttbroker_tb_id_seq                       | sequence |                                   |                   | 
+(46 rows)
+
