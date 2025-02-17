@@ -1,6 +1,15 @@
+import sys
+import os
+import ssl
 import paho.mqtt.client as mqtt
 from django.utils.timezone import now
 from apps.kip_online_ru.models import MQTTBrokerMessage
+
+# Шаг 1: Убедимся, что путь к проекту добавлен в sys.path
+# Это необходимо, чтобы корректно настроить Django, даже если скрипт запускается из папки scripts
+project_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))  # Получаем путь к корню проекта
+if project_path not in sys.path:  # Если путь не в sys.path, добавляем его
+    sys.path.insert(0, project_path)
 
 # Настройки MQTT
 MQTT_BROKER = "kip-online.ru"
