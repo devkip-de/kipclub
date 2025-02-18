@@ -27,7 +27,7 @@ class MQTTBrokerMessage(models.Model):
     time_stamp = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
 
     class Meta:
-        db_table = "mqttbroker_tb"
+#        db_table = "mqttbroker_tb"
         verbose_name = "Сообщение брокера MQTT"
         verbose_name_plural = "Сообщения брокера MQTT"
 
