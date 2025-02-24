@@ -1,0 +1,32 @@
+<!-- apps/kip_online_ru/templates/base_olu.html -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Личный кабинет{% endblock %}</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="http://kipclub.ru">КИП Клуб</a></li>
+                <li><a href="#">Настройки</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Kip Club</p>
+    </footer>
+
+</body>
+</html>
+

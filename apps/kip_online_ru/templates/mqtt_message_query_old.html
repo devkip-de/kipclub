@@ -1,0 +1,28 @@
+<!-- apps/kip_online_ru/templates/mqtt_message_query.html -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Фильтрация сообщений</title>
+</head>
+<body>
+    <h1>Фильтрация сообщений MQTT</h1>
+
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Применить фильтры</button>
+    </form>
+
+    <h2>Результаты</h2>
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message.client_id }} - {{ message.topic }} - {{ message.time_stamp }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Сообщений не найдено.</p>
+    {% endif %}
+</body>
+</html>
