@@ -5,19 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Фильтрация сообщений</title>
-    <script>
-        // Функция очистки вывода сообщений
-        function clearResults() {
-            document.getElementById("messages-container").innerHTML = "<p>Вывод очищен.</p>";
-        }
-    </script>
 </head>
 <body>
     <h1>Фильтрация сообщений MQTT</h1>
 
     <form method="get" action="{% url 'mqtt_message_query' %}">
-        {% csrf_token %}
-        
         <div>
             <label for="topic_root">Корневой узел топика:</label>
             <input type="text" id="topic_root" name="topic_root" value="{{ request.GET.topic_root|default_if_none:'' }}">
@@ -36,21 +28,18 @@
         <div>
             <button type="submit">Применить фильтры</button>
             <button type="button" onclick="window.location.href='{% url 'mqtt_message_query' %}';">Очистить фильтр</button>
-            <button type="button" onclick="clearResults();">Очистить вывод</button>
         </div>
     </form>
 
     <h2>Результаты</h2>
-    <div id="messages-container">
-        {% if messages %}
-            <ul>
-            {% for message in messages %}
-                <li>{{ message.client_id }} - {{ message.topic }} - {{ message.time_stamp }}</li>
-            {% endfor %}
-            </ul>
-        {% else %}
-            <p>Сообщений не найдено.</p>
-        {% endif %}
-    </div>
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message.client_id }} - {{ message.topic }} - {{ message.time_stamp }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Сообщений не найдено.</p>
+    {% endif %}
 </body>
 </html>

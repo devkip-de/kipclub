@@ -108,6 +108,7 @@ USE_TZ = True             # Включает поддержку временны
 # Настройки для хранения и доступа к статическим и медиа-файлам.
 STATIC_URL = '/static/'                      # URL для доступа к статическим файлам
 STATICFILES_DIRS = [BASE_DIR / 'static']     # Папка для статических файлов
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'                        # URL для доступа к медиа-файлам
 MEDIA_ROOT = BASE_DIR / 'media'              # Папка для хранения медиа-файлов
 
